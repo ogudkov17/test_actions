@@ -1,0 +1,9 @@
+name: test_actions
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: build
+        run: echo username is ${{ inputs.username }}
