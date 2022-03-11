@@ -7,4 +7,8 @@ jobs:
 
     steps:
       - name: build
+        uses: actions/checkout@v3
+        with:
+          cc: gcc
+          cxx: g++
         run: pwd && ls && ls ../
