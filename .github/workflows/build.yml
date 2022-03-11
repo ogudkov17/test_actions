@@ -9,4 +9,4 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3
       - name: build
-        run: pwd && ls && ls ../
+        run: g++ hello.cpp -o hello
