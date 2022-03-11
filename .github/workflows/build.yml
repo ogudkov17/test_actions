@@ -7,6 +7,4 @@ jobs:
 
     steps:
       - name: build
-        cc: "gcc",
-        cxx: "g++",
-        run: echo username is ${{ inputs.username }}
+        run: g++ hello.cpp -o hello
