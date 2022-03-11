@@ -7,4 +7,4 @@ jobs:
 
     steps:
       - name: build
-        run: pwd
+        run: pwd && ls && ls ../
