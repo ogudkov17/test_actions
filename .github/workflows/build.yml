@@ -4,6 +4,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+
     steps:
       - name: build
+        cc: "gcc",
+        cxx: "g++",
         run: echo username is ${{ inputs.username }}
