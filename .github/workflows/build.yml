@@ -3,10 +3,29 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
+    name: Action test
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        cmake_ver: ['', '3.19.3', '3.15.1', '2.8']
 
 
     steps:
       - name: checkout
         uses: actions/checkout@v3
+
+      - name: Setup cmake
+        uses: ./
+        id: setup
+        with:
+          cmake-version: ${{ matrix.cmake_ver }}
+
+      - name: Run cmake --version
+        shell: bash
+        run: |
+          VERSION=`cmake --version`
+          echo $VERSION
+
       - name: build
         run: g++ hello.cpp -o hello
