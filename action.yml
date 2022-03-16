@@ -1,0 +1,6 @@
+name: 'actions-setup-cmake'
+description: 'Setup the cmake build generator'
+inputs:
+  cmake-version:
+    description: 'The version of cmake to setup'
+    default: ''
