@@ -11,6 +11,6 @@ jobs:
       - name: build
         run: g++ hello.cpp -o hello
       - name: publish
-        uses: actions/upload-artifact@3
+        uses: actions/upload-artifact@v3
         with:
           path: hello
