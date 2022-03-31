@@ -9,8 +9,8 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3
       - name: build
-        run: g++ hello.cpp -o hello
+        run: cmake -H. -B_build && cmake --build _build
       - name: publish
         uses: actions/upload-artifact@v3
         with:
-          path: hello
+          path: _build/hello
