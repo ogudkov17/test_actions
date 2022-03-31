@@ -9,7 +9,9 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3
       - name: build
-        run: cmake -H. -B_build && cmake --build _build
+        run: cmake -H. -B_build -DBUILD_TESTS=ON && cmake --build _build
+      - name: test
+        run: cd _build && ctest
       - name: publish
         uses: actions/upload-artifact@v3
         with:
