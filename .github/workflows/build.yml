@@ -15,7 +15,13 @@ jobs:
       - name: build
         run: cmake -H. -B_build -DCOVERALLS=ON -DBUILD_TESTS=ON && cmake --build _build && cmake --build _build --target test
       - name: test
-        run: cd _build && ctest && coveralls
+        run: cd _build && ctest 
+      - name: coveralls
+        uses: actions/setup-node@v1
+        with:
+          repo-token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          GITHUB_TOKEN: ${{ github.token }}
       - name: publish
         uses: actions/upload-artifact@v3
         with:
