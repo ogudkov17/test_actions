@@ -16,12 +16,8 @@ jobs:
         run: cmake -H. -B_build -DCOVERALLS=ON -DBUILD_TESTS=ON && cmake --build _build && cmake --build _build --target test
       - name: test
         run: cd _build && ctest 
-      - name: npm node
-        uses: actions/setup-node@v1
-        with:
-          repo-token: ${{ github.token }}
-          repository: ${{ github.repository }}
-          GITHUB_TOKEN: ${{ github.token }}
+      - name: run coveralls
+        run: coveralls
       - name: coveralls
         uses: coverallsapp/github-action@master
         with:
