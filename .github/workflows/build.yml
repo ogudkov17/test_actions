@@ -10,10 +10,12 @@ jobs:
         uses: actions/checkout@v3
       - name: apt_gtest
         run: sudo apt install -y googletest libgtest-dev
+      - name: pip_coveralls
+        run: pip install cpp-coveralls
       - name: build
-        run: cmake -H. -B_build -DBUILD_TESTS=ON && cmake --build _build
+        run: cmake -H. -B_build -DCOVERALLS -DBUILD_TESTS=ON && cmake --build _build && cmake --build _build --target test
       - name: test
-        run: cd _build && ctest
+        run: cd _build && ctest && coveralls
       - name: publish
         uses: actions/upload-artifact@v3
         with:

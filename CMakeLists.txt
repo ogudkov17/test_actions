@@ -7,6 +7,13 @@ project(hello)
 
 add_executable(hello hello.cpp)
 
+option(COVERALLS "Generate coveralls data" OFF)
+
+if (COVERALLS)
+		target_compile_options(hello PRIVATE --coverage)
+		target_link_libraries(hello PRIVATE --coverage)
+endif()
+
 option(BUILD_TESTS "Build tests" OFF)
 
 if (BUILD_TESTS)
@@ -19,5 +26,8 @@ if (BUILD_TESTS)
 	#add_test(NAME check COMMAND check)
 
 	include(GoogleTest)
+
 	gtest_discover_tests(check)
 endif()
+
+
