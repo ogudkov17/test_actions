@@ -13,7 +13,7 @@ jobs:
       - name: pip_coveralls
         run: pip install cpp-coveralls
       - name: build
-        run: cmake -H. -B_build -DCOVERALLS -DBUILD_TESTS=ON && cmake --build _build && cmake --build _build --target test
+        run: cmake -H. -B_build -DCOVERALLS=ON -DBUILD_TESTS=ON && cmake --build _build && cmake --build _build --target test
       - name: test
         run: cd _build && ctest && coveralls
       - name: publish
