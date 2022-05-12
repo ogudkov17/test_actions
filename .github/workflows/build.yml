@@ -17,11 +17,14 @@ jobs:
       - name: test
         run: cd _build && ctest 
         #      - name: run coveralls
-        #        run: coveralls
+        #        env:
+        #            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        #        run: coveralls --service=github
       - name: coveralls
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ github.token }}
+          path-to-lcov: lcov.info
       - name: publish
         uses: actions/upload-artifact@v3
         with:
