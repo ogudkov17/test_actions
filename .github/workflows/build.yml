@@ -16,10 +16,8 @@ jobs:
         run: cmake -H. -B_build -DCOVERALLS=ON -DBUILD_TESTS=ON && cmake --build _build && cmake --build _build --target test
       - name: test
         run: cd _build && ctest 
-        #      - name: run coveralls
-        #        env:
-        #            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        #        run: coveralls --service=github
+      - name: run coveralls
+        run: coveralls -t ${{ secret.coveralls_token }}
       - name: coveralls
         uses: coverallsapp/github-action@master
         with:
